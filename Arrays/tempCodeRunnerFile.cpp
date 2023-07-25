@@ -1,0 +1,1 @@
+ // struct rectangle r={10,5};
