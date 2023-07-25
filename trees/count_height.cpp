@@ -79,15 +79,6 @@ void treecreate(){
 
 }
 
-void preorder(node *p){
-    if (p == NULL) return;
-    
-    cout<<p->data<<" ";
-    preorder(p->leftchild);
-    preorder(p->rightchild);
-    
-
-}
 int count_total(node *p){
     int x,y;
     if(p){                      //this function counts all the nodes in the tree
@@ -111,6 +102,34 @@ int count_leafnodes(node *p){
         return x+y;
     }
     }
+    retrun 0;
+}
+int count_nonleafnodes(node *p){
+    int x,y;
+    if(p){
+             x=count_nonleafnodes(p->leftchild);
+             y=count_nonlefnodes(p->rightchild);
+            //  if(p->leftchild!=NULL && p->rightchild!=NULL){
+            //     return x+y+1;                                   //this condition only count non leaf node with degree 2
+            //  }
+            //  else{
+            //     return x+y;
+            //  }
+
+             //  if(p->leftchild!=NULL || p->rightchild!=NULL){
+            //     return x+y+1;                                   //this condition only count non leaf node with degree 1 and 2
+            //  }
+            //  else{
+            //     return x+y;
+            //  }
+
+            //  if((p->leftchild!=NULL  && p->rightchilld==NULL) || (p->leftchild==NULL && p->rightchild!=NULL){
+            //     return x+y+1;                                   //this condition only count non leaf node with degree 1
+            //  }
+            //  else{
+            //     return x+y;
+            //  }
+    }
 }
 int height(node *p){
     int x,y;
@@ -129,8 +148,10 @@ int height(node *p){
 int main(){
     
    treecreate();
-//    preorder(root);
-    cout<<"the no of node in the tree are : "<<count(root)<<endl;
+
+    // cout<<"the no of node in the tree are : "<<count_total(root)<<endl;
     cout<<"the hight of the tree is : "<<height(root)<<endl;
+    cout<<"the no of leaf node in the tree are : "<<count_leafnodes(root)<<endl;
+    cout<<"the no of non leaf node with degree __ is "<<count_nonleafnodes(root)
 
 }
