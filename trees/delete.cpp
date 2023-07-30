@@ -78,57 +78,23 @@ void treecreate(){
     }
 
 }
-int insert(node *p,int key){
-    node *temp,*r;
-    while(p!=NULL){
-        if(p->data==key){
-            cout<<"Element is already present ."<<endl;
-            return 0;
-        }
-        else if(key<p->data){
-            r=p;
-            p=p->leftchild;
-        }
-        else{
-            r=p;
-            p=p->rightchild;
-        }
-    }
-    temp = new node;
-    temp->data=key;
-    temp->leftchild=temp->rightchild=NULL;
-    if(temp->data<r->data){
-        r->leftchild=temp;
-    }
-    else{
-        r->rightchild=temp;
-    }
-    cout<<"element is added"<<endl;
-    return 1;
-}
+
 void preorder(node *p){
-    if(p){
-        cout<<p->data<<" ";
-        preorder(p->leftchild);
-        preorder(p->rightchild);
+    if (p == NULL) return;
+    {
+    cout<<p->data<<" ";
+    preorder(p->leftchild);
+    preorder(p->rightchild);
     }
+    cout<<endl;
+    
+
 }
 
 int main(){
     
    treecreate();
-   int key;
-   cin>>key;
-  int r= insert(root,key);
-  
+   preorder(root);
    
-   if(r==0){
-    cout<<"old preorder of the elements is : ";
-    preorder(root);
-   }
-   else{
-    cout<<"New preorder of the elements is : ";
-    preorder(root);
-   }
 
 }
